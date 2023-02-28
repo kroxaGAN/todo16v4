@@ -21,6 +21,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 function App() {
     const status = useAppSelector<RequestStatusType>((state) => state.app.status)
     const isInitialized = useAppSelector(state => state.auth.isInitialized)
+    const isLogined=useAppSelector(state=>state.auth.isLogined)
     const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(authorizeMeTC())
@@ -46,7 +47,7 @@ function App() {
                     <Typography variant="h6">
                         News
                     </Typography>
-                    {isInitialized && <Button color="inherit" onClick={onClickHandler}>Logout</Button>}
+                    {isLogined && <Button color="inherit" onClick={onClickHandler}>Logout</Button>}
                 </Toolbar>
                 {status === 'loading' && <LinearProgress/>}
             </AppBar>

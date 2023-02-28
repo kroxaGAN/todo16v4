@@ -14,7 +14,6 @@ type initialStateType=typeof initialState
 export const authReducer = (state: initialStateType=initialState, action: AuthReducerType) => {
     switch (action.type) {
         case 'AUTH/LOGIN-CHANGE': {
-            debugger
             return {...state,isLogined:action.value}
         }
         case "AUTH/LOADING-CHANGE":{
@@ -70,9 +69,7 @@ export const authorizeMeTC=()=>(dispatch:Dispatch)=>{
 export const logOutTC=()=>(dispatch:Dispatch)=>{
     authAPI.logout()
         .then((res)=>{
-            if(res.data.resultcode===0){
-                dispatch(authAC(false))
-            }
+            dispatch(authAC(false))
         })
 }
 
